@@ -6,7 +6,7 @@ This README is written as a living document: it describes who I am, my startup j
 
 **Quick links**
 
-- Live site: (your site URL here)
+- Live site: `www.rajnikantg.in`
 - Email: `rajnikantg357@gmail.com`
 - GitHub: `https://github.com/rajnikant357`
 - LinkedIn: `https://www.linkedin.com/in/rajnikant-gaurav-5b70112a2/`
