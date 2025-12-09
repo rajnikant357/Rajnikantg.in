@@ -32,7 +32,7 @@ export const NotebookPage: React.FC<NotebookPageProps> = ({
         <div className="relative shrink-0 sm:-ml-4 z-20 self-start sm:self-auto group cursor-pointer">
           <div className="bg-white p-1.5 shadow-md border border-gray-200 w-25 h-25 rotate-[-2deg] group-hover:rotate-0 transition-transform duration-300">
             <img 
-              src="public/R logo 1.jpg" 
+              src="/R%20logo%201.jpg" 
               alt="Rajnikant" 
               className="w-20 h-20 object-cover filter sepia-[.2]"
             />
@@ -139,8 +139,8 @@ export const NotebookPage: React.FC<NotebookPageProps> = ({
               </div>
             </div>
             <div className="mt-4 md:mt-0">
-              {PolaroidImage({
-                src: "public/myself.jpg",
+                {PolaroidImage({
+                src: "/myself.jpg",
                 alt: "Coding Setup",
                 rotate: "rotate-3",
                 caption: "Me"
