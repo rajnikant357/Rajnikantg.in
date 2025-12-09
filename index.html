@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rajnikant Gaurav - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              hand: ['"Patrick Hand"', 'cursive'],
+              marker: ['"Permanent Marker"', 'cursive'],
+            },
+            colors: {
+              paper: {
+                line: '#a5b4fc', // faint blue line
+                margin: '#fca5a5', // pink/red margin
+                bg: '#ffffff',
+              }
+            },
+            backgroundImage: {
+              'notebook-lines': 'linear-gradient(transparent 1.9rem, #e2e8f0 1.9rem)',
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #dbeafe; /* Light blue desk background */
+      }
+      /* Custom scrollbar for a cleaner look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #94a3b8;
+        border-radius: 4px;
+      }
+      
+      /* Notebook line alignment helper */
+      .notebook-text {
+        line-height: 2rem; /* Matches background size */
+      }
+
+      /* Jagged Tape Edge Effect */
+      .tape-serrated {
+        clip-path: polygon(
+          0% 0%, 100% 0%, 
+          /* Right Edge Zig Zag */
+          100% 10%, 96% 15%, 100% 20%, 96% 25%, 100% 30%, 96% 35%, 100% 40%, 96% 45%, 100% 50%, 
+          96% 55%, 100% 60%, 96% 65%, 100% 70%, 96% 75%, 100% 80%, 96% 85%, 100% 90%, 96% 95%, 100% 100%,
+          /* Bottom Edge */
+          0% 100%, 
+          /* Left Edge Zig Zag */
+          4% 95%, 0% 90%, 4% 85%, 0% 80%, 4% 75%, 0% 70%, 4% 65%, 0% 60%, 4% 55%, 0% 50%, 
+          4% 45%, 0% 40%, 4% 35%, 0% 30%, 4% 25%, 0% 20%, 4% 15%, 0% 10%
+        );
+      }
+
+      /* Scroll Reveal Animation */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
