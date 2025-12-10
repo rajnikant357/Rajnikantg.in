@@ -95,21 +95,21 @@ export const AboutDetailPage: React.FC<AboutDetailPageProps> = ({
             🌐 My Network
           </h3>
           <div className="flex flex-wrap gap-4 notebook-text text-xl leading-[2rem]">
-            <a href="#" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
+            <a href="https://www.linkedin.com/in/rajnikant-gaurav-5b70112a2/" target="_blank" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
               <Linkedin size={20} /> LinkedIn
             </a>
             <span className="text-gray-400">|</span>
-            <a href="#" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
+            <a href="https://github.com/rajnikant357"  target="_blank" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
               <Github size={20} /> GitHub
             </a>
             <span className="text-gray-400">|</span>
-            <a href="#" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
+            <a href="https://x.com/papercode_" target="_blank" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
               <Twitter size={20} /> Twitter
             </a>
             <span className="text-gray-400">|</span>
-            <a href="#" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
-              <Globe size={20} /> Portfolio
-            </a>
+            <a href="https://prometrion.com" target="_blank" className="flex items-center gap-2 hover:text-blue-500 font-bold hover:underline decoration-wavy">
+                Prometrion          
+              </a>
           </div>
         </section>
 

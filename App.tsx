@@ -208,7 +208,7 @@ const App: React.FC = () => {
           }`}
         >
           {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-          <span>{isDarkMode ? 'Day Mode' : 'Night Mode'}</span>
+          <span>{isDarkMode ? 'White Page' : 'Black Page'}</span>
         </button>
 
         <div 

@@ -78,7 +78,7 @@ export const intents: Intent[] = [
       "kaun si programming languages aati hain", "web development aata hai kya"
     ],
     response:
-      "Tech Stack:\n• Langs: JS, TS, Python, C++\n• Web: React, Next.js, Tailwind\n• Backend: Node.js, Express\n• Tools: Git, AI APIs\n\nटेक स्टैक:\n• Langs: JS, TS, Python, C++\n• Web: React, Next.js\n• Backend: Node.js\n• Tools: Git, AI APIs"
+      "Tech Stack:\n• Langs: JS, TS, Python\n• Web: React, Next.js, Tailwind\n• Backend: Node.js, Express\n• Tools: Git, AI APIs\n\nटेक स्टैक:\n• Langs: JS, TS, Python\n• Web: React, Next.js\n• Backend: Node.js\n• Tools: Git, AI APIs"
   },
 
   // 4. Education
@@ -181,7 +181,7 @@ export const intents: Intent[] = [
       "linkedin ya github milega", "baat karni ho to kaise karein"
     ],
     response:
-      "Reach him here:\n📧 rajnikant@example.com\n🔗 linkedin.com/in/rajnikant-gaurav\n💻 github.com/rajnikant\n\nयहाँ संपर्क करें:\n📧 rajnikant@example.com\n🔗 LinkedIn/GitHub"
+      "Reach him here:\ncall - +91 7084202503\nmail - rajnikantg357@gmail.com\nlinkedin - Rajnikant-Gaurav\nX/twitter - Papercode_\n\nयहाँ संपर्क करें:\ncall - +91 7084202503\nmail - rajnikantg357@gmail.com\nlinkedin - Rajnikant-Gaurav\nX/twitter - Papercode_"
   },
 
   // 10. Resume / CV
@@ -341,3 +341,26 @@ export const knowledgeBase: KnowledgeEntry[] = [
     text: "वो Prometrion जैसे प्लेटफॉर्म बनाकर खुद मौके बनाते हैं। वो हर साइड प्रोजेक्ट को असली प्रोडक्ट की तरह मानते हैं।"
   }
 ];
+
+// Structured contact entries (visible text stored in knowledgeBase above, hidden links exported below)
+export const contactLinks: { phone: string; mail: string; linkedin: string; twitter: string } = {
+  phone: 'tel:+917084202503',
+  mail: 'mailto:rajnikantg357@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/rajnikant-gaurav-5b70112a2/',
+  twitter: 'https://x.com/papercode_'
+};
+
+// Add contact entries to the knowledge base so retrievals can return the visible labels.
+knowledgeBase.push({
+  id: 'contact_en',
+  topic: 'contact',
+  language: 'en',
+  text: 'call - +91 7084202503\nmail - rajnikantg357@gmail.com\nlinkedin - Rajnikant-Gaurav\nX/twitter - Papercode_'
+});
+
+knowledgeBase.push({
+  id: 'contact_hi',
+  topic: 'contact',
+  language: 'hi',
+  text: 'call - +91 7084202503\nmail - rajnikantg357@gmail.com\nlinkedin - Rajnikant-Gaurav\nX/twitter - Papercode_'
+});

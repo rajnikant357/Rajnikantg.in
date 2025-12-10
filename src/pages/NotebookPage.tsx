@@ -94,11 +94,10 @@ export const NotebookPage: React.FC<NotebookPageProps> = ({
             </div>
             <div className="h-8"></div>
             <div className="notebook-text text-xl sm:text-2xl leading-[2rem]">
-              <p>Senior Frontend Engineer & Creative Developer.</p>
+              <p>Full Stack Developer & Creative Engineer.</p>
               <p>Turning caffeine into clean code and pixel-perfect UIs.</p>
             </div>
           </div>
-
           <div className="relative z-20 group cursor-pointer mt-4 md:mt-0 mr-4">
             <a href="/resume.pdf" download className="block relative cursor-pointer">
               <div className="absolute -left-14 top-1/2 -translate-y-1/2 text-purple-500 hidden sm:block animate-pulse">
@@ -246,21 +245,21 @@ export const NotebookPage: React.FC<NotebookPageProps> = ({
               <div className="flex items-center gap-3">
                 <Linkedin size={20} className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}/>
                 <a href="https://www.linkedin.com/in/rajnikant-gaurav-5b70112a2/" target="_blank" rel="noreferrer" className="font-bold hover:text-blue-500 hover:underline decoration-wavy cursor-pointer">
-                  /in/rajnikant-gaurav-5b70112a2
+                  Linkedin/Rajnikant
                 </a>
               </div>
 
               <div className="flex items-center gap-3">
                 <Github size={20} className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}/>
                 <a href="https://github.com/rajnikant357" target="_blank" rel="noreferrer" className="font-bold hover:text-blue-500 hover:underline decoration-wavy cursor-pointer">
-                  github.com/rajnikant357
+                  Github/Rajnikant 
                 </a>
               </div>
 
               <div className="flex items-center gap-3">
                 <Twitter size={20} className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}/>
                 <a href="https://x.com/papercode_" target="_blank" rel="noreferrer" className="font-bold hover:text-blue-500 hover:underline decoration-wavy cursor-pointer">
-                  @papercode_
+                  X/@Papercode_
                 </a>
               </div>
             </div>

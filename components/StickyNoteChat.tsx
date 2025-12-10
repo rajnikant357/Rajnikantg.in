@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, MessageCircle, Loader2 } from 'lucide-react';
 import { getChatResponse } from '../services/chatService';
 import { ChatMessage } from '../types';
+import { contactLinks } from '../data/chatData';
 
 export const StickyNoteChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +88,7 @@ export const StickyNoteChat: React.FC = () => {
                     : 'bg-white/60 text-gray-800 shadow-sm -rotate-1'
                 }`}
               >
-                {msg.text}
+                {renderMessage(msg.text)}
               </div>
             </div>
           ))}
@@ -123,3 +124,61 @@ export const StickyNoteChat: React.FC = () => {
     </div>
   );
 };
+
+// Helper to render message text with clickable contact links when patterns match
+function renderMessage(text: string) {
+  // If no line breaks, still handle single-line containing contact info
+  const lines = text.split(/\r?\n/);
+  return (
+    <div>
+      {lines.map((line, i) => {
+        const trimmed = line.trim();
+        // call - +91 7084202503
+        const callMatch = trimmed.match(/^call\s*-\s*(.+)$/i);
+        if (callMatch) {
+          const label = callMatch[0].replace(/call\s*-\s*/i, 'call - ');
+          return (
+            <div key={i}>
+              <a href={contactLinks.phone} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+            </div>
+          );
+        }
+
+        const mailMatch = trimmed.match(/^mail\s*-\s*(.+)$/i);
+        if (mailMatch) {
+          const label = mailMatch[0].replace(/mail\s*-\s*/i, 'mail - ');
+          return (
+            <div key={i}>
+              <a href={contactLinks.mail} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+            </div>
+          );
+        }
+
+        const linkedinMatch = trimmed.match(/^linkedin\s*-\s*(.+)$/i);
+        if (linkedinMatch) {
+          const label = linkedinMatch[0].replace(/linkedin\s*-\s*/i, 'linkedin - ');
+          return (
+            <div key={i}>
+              <a href={contactLinks.linkedin} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+            </div>
+          );
+        }
+
+        const twitterMatch = trimmed.match(/^(x\/twitter|x|twitter)\s*-\s*(.+)$/i);
+        if (twitterMatch) {
+          const label = trimmed.replace(/^(x\/twitter|x|twitter)\s*-\s*/i, 'X/twitter - ');
+          return (
+            <div key={i}>
+              <a href={contactLinks.twitter} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+            </div>
+          );
+        }
+
+        // Default: render plain text preserving line breaks
+        return (
+          <div key={i} className="whitespace-pre-line">{line}</div>
+        );
+      })}
+    </div>
+  );
+}
