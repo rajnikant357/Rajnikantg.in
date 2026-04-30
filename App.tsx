@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import usePageTracking from './src/hooks/usePageTracking';
 import { Moon, Sun, Star, ArrowLeft, Pencil, Coffee, Sparkles, Check, QrCode, Megaphone, Trophy, Briefcase, Mail } from 'lucide-react';
 import { StickyNoteChat } from './components/StickyNoteChat';
 import { projectsData } from './data/projects';
@@ -12,6 +13,7 @@ import { DonatePage } from './src/pages/DonatePage';
 import { SponsorPage } from './src/pages/SponsorPage';
 
 const App: React.FC = () => {
+  usePageTracking();
   const [view, setView] = useState<'notebook' | 'donate' | 'sponsor' | 'project-detail' | 'about-detail' | 'projects-list'>('notebook');
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
