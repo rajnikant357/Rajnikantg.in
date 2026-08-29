@@ -342,10 +342,16 @@ const AppContent: React.FC = () => {
                     </div>
                     <button
                       onClick={() => setIsMobileNotesOpen(false)}
-                      className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 font-bold transition-colors cursor-pointer text-slate-700 dark:text-slate-200"
+                      style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px' }}
+                      title="Close Notes"
                       aria-label="Close Notes"
+                      className={`flex items-center justify-center p-1.5 sm:p-2 border-[2px] sm:border-[3px] transform -rotate-2 hover:rotate-0 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer shadow-md ${
+                        isDarkMode
+                          ? 'border-yellow-400 text-yellow-300 hover:bg-slate-800 bg-slate-900 shadow-yellow-900/20'
+                          : 'border-slate-600 text-slate-700 hover:bg-white bg-white shadow-slate-400/20'
+                      }`}
                     >
-                      <X size={24} />
+                      <X size={18} className="sm:w-5 sm:h-5" />
                     </button>
                   </div>
 

@@ -74,8 +74,14 @@ export const StickyNoteChat: React.FC = () => {
         {/* Header */}
         <div className="flex justify-between items-center mb-4 border-b border-yellow-300 pb-2">
           <h3 className="text-xl font-bold text-yellow-900">Paper Pots 🪴</h3>
-          <button onClick={() => setIsOpen(false)} className="text-yellow-800 hover:text-red-600 transition-colors">
-            <X size={24} />
+          <button 
+            onClick={() => setIsOpen(false)} 
+            style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px' }}
+            title="Close Chat"
+            aria-label="Close Chat"
+            className="flex items-center justify-center p-1 sm:p-1.5 border-[2px] sm:border-[2.5px] border-slate-600 text-slate-700 hover:bg-white bg-white/90 shadow-sm transform -rotate-2 hover:rotate-0 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+          >
+            <X size={18} className="stroke-[2]" />
           </button>
         </div>
 
