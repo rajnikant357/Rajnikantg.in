@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import { Project } from '../../types';
 
 interface ProjectDetailPageProps {
@@ -40,6 +40,36 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
         <div className="notebook-text text-xl leading-[2rem] text-slate-500 italic">
           Sub tag line - {currentProject.subTagline}
         </div>
+        {(currentProject.demoLink || currentProject.repoLink) && (
+          <div className="mt-4 flex flex-wrap items-center gap-4 notebook-text text-xl leading-[2rem]">
+            {currentProject.demoLink && (
+              <a
+                href={currentProject.demoLink}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-yellow-300 hover:bg-yellow-400 text-yellow-900 px-5 py-1 rounded-sm shadow-md border border-yellow-500 transform hover:-rotate-1 transition-all font-bold cursor-pointer"
+              >
+                <span>Live Demo</span>
+                <ExternalLink size={18} />
+              </a>
+            )}
+            {currentProject.repoLink && (
+              <a
+                href={currentProject.repoLink}
+                target="_blank"
+                rel="noreferrer"
+                className={`inline-flex items-center gap-2 px-5 py-1 rounded-sm shadow-md border transform hover:rotate-1 transition-all font-bold cursor-pointer ${
+                  isDarkMode
+                    ? 'bg-slate-700 hover:bg-slate-600 text-slate-100 border-slate-500'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-300'
+                }`}
+              >
+                <span>GitHub Repo</span>
+                <Github size={18} />
+              </a>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Full Width Taped Screenshot */}

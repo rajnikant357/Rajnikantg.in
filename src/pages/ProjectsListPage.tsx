@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
-import { projectsData } from '../../data/projects';
 import { Project } from '../../types';
+import { useAdminData } from '../context/AdminDataContext';
 
 interface ProjectsListPageProps {
   isDarkMode: boolean;
@@ -18,6 +18,9 @@ export const ProjectsListPage: React.FC<ProjectsListPageProps> = ({
   PolaroidImage,
   SectionStar,
 }) => {
+  const { data } = useAdminData();
+  const { projects } = data;
+
   return (
     <main className="pl-6 sm:pl-36 pr-4 sm:pr-12 pt-8 animate-in fade-in slide-in-from-bottom-4 duration-500 flex-grow">
       <button 
@@ -40,9 +43,11 @@ export const ProjectsListPage: React.FC<ProjectsListPageProps> = ({
       </div>
 
       <div className="space-y-12">
-        {projectsData.map((project, index) => (
+        {projects.map((project, index) => (
           <div key={project.id} className="reveal-on-scroll">
-            <div className="flex flex-col md:flex-row gap-8 items-start border-b border-slate-200 pb-8 mb-4">
+            <div className={`flex flex-col gap-8 items-start border-b border-slate-200 pb-8 mb-4 ${
+              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+            }`}>
               <div className="shrink-0 cursor-pointer" onClick={() => onProjectClick(project)}>
                 {PolaroidImage({
                   src: project.image,
@@ -52,7 +57,7 @@ export const ProjectsListPage: React.FC<ProjectsListPageProps> = ({
                   imgHeight: "h-32 sm:h-40"
                 })}
               </div>
-              <div className="flex-1 w-full">
+              <div className={`flex-1 w-full ${index % 2 !== 0 ? 'md:text-right' : ''}`}>
                 <h3 
                   className="notebook-text text-3xl font-bold leading-[2rem] hover:text-blue-600 cursor-pointer transition-colors"
                   onClick={() => onProjectClick(project)}
@@ -64,7 +69,7 @@ export const ProjectsListPage: React.FC<ProjectsListPageProps> = ({
                 </p>
                 
                 {/* Tech Stack Chips */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 !== 0 ? 'md:justify-end' : ''}`}>
                   {project.techStack.map(tech => (
                     <span key={tech} className={`px-2 py-0.5 rounded-sm text-sm font-bold border ${isDarkMode ? 'bg-slate-700 border-slate-600 text-slate-300' : 'bg-slate-100 border-slate-300 text-slate-600'}`}>
                       {tech}
@@ -76,7 +81,7 @@ export const ProjectsListPage: React.FC<ProjectsListPageProps> = ({
                   {project.subTagline}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4">
+                <div className={`flex flex-wrap items-center gap-4 ${index % 2 !== 0 ? 'md:justify-end' : ''}`}>
                   <button 
                     onClick={() => onProjectClick(project)}
                     className="bg-blue-100 hover:bg-blue-200 text-blue-800 px-4 py-1 rounded border border-blue-300 font-bold transition-colors cursor-pointer shadow-sm"

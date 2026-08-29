@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowLeft, Megaphone, Trophy, Briefcase, Check, Mail } from 'lucide-react';
+import { useAdminData } from '../context/AdminDataContext';
 
 interface SponsorPageProps {
   isDarkMode: boolean;
@@ -34,6 +35,9 @@ export const SponsorPage: React.FC<SponsorPageProps> = ({
   onDeselect,
   SectionStar,
 }) => {
+  const { data } = useAdminData();
+  const selectedTierObj = data.sponsorTiers.find(t => t.id === selectedTier);
+
   return (
     <main className="pl-6 sm:pl-36 pr-4 sm:pr-12 pt-8 animate-in fade-in slide-in-from-bottom-4 duration-500 flex-grow">
       <button 
@@ -57,30 +61,29 @@ export const SponsorPage: React.FC<SponsorPageProps> = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 reveal-on-scroll">
-        {['Brand Feature', 'Event Partner', 'Hire Me'].map((tier) => (
+        {data.sponsorTiers.map((tier, index) => (
           <div 
-            key={tier}
-            className={`relative group transition-all duration-300 ${selectedTier === tier ? 'scale-105 z-10' : 'hover:-translate-y-1'}`}
-            onClick={() => onTierSelect(tier)}
+            key={tier.id}
+            className={`relative group transition-all duration-300 ${selectedTier === tier.id ? 'scale-105 z-10' : 'hover:-translate-y-1'}`}
+            onClick={() => onTierSelect(tier.id)}
           >
             <div className={`
-              ${tier === 'Brand Feature' ? 'bg-indigo-50 border-indigo-200' : tier === 'Event Partner' ? 'bg-amber-50 border-amber-200' : 'bg-teal-50 border-teal-200'}
-              border-2 ${selectedTier === tier ? 'ring-4 ring-opacity-50' : ''} 
+              ${index % 3 === 0 ? 'bg-indigo-50 border-indigo-200' : index % 3 === 1 ? 'bg-amber-50 border-amber-200' : 'bg-teal-50 border-teal-200'}
+              border-2 ${selectedTier === tier.id ? 'ring-4 ring-opacity-50' : ''} 
               p-6 shadow-sm rotate-[-1deg] h-full flex flex-col items-center text-center transition-all cursor-pointer`}
             >
-              {tier === 'Brand Feature' && <Megaphone size={40} className="text-indigo-600 mb-4" />}
-              {tier === 'Event Partner' && <Trophy size={40} className="text-amber-600 mb-4" />}
-              {tier === 'Hire Me' && <Briefcase size={40} className="text-teal-600 mb-4" />}
+              <span className="text-4xl mb-4 block leading-none">{tier.emoji || '🤝'}</span>
               
-              <h3 className={`font-marker text-2xl mb-2 text-slate-800`}>{tier}</h3>
-              <p className="font-hand text-lg mb-4 text-slate-600">Connect with me</p>
+              <h3 className={`font-marker text-2xl mb-2 text-slate-800`}>{tier.name}</h3>
+              <p className="font-hand text-lg mb-1 text-slate-600">{tier.price}</p>
+              <p className="font-hand text-md text-slate-500 mb-4">{tier.description}</p>
               
               <div className="mt-auto w-full">
                 <button className={`
-                  ${selectedTier === tier ? 'bg-green-500 hover:bg-green-600 text-white border-green-600' : 'bg-white/50 hover:bg-white text-slate-800 border-slate-300'} 
+                  ${selectedTier === tier.id ? 'bg-green-500 hover:bg-green-600 text-white border-green-600' : 'bg-white/50 hover:bg-white text-slate-800 border-slate-300'} 
                   px-4 py-1 rounded border font-bold w-full transition-colors flex justify-center items-center gap-2 cursor-pointer`}
                 >
-                  {selectedTier === tier ? <><Check size={18} strokeWidth={3} /> Selected</> : 'Select'}
+                  {selectedTier === tier.id ? <><Check size={18} strokeWidth={3} /> Selected</> : 'Select'}
                 </button>
               </div>
             </div>
@@ -90,13 +93,13 @@ export const SponsorPage: React.FC<SponsorPageProps> = ({
       </div>
 
       <div id="action-section" className="max-w-lg mx-auto mb-8 transition-all duration-500 reveal-on-scroll">
-        {selectedTier && (
+        {selectedTier && selectedTierObj && (
           <div className="mb-6 animate-in fade-in slide-in-from-top-4 duration-500 text-center">
             <div className="inline-block relative bg-green-100 border-2 border-green-400 text-green-900 px-6 py-4 rounded-sm shadow-md transform rotate-1">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-amber-900/20 -rotate-1 backdrop-blur-sm drop-shadow-sm opacity-60 tape-serrated" />
               <p className="font-marker text-2xl mb-1">Great! Let's Talk.</p>
               <p className="font-hand text-lg">
-                You're interested in <span className="font-bold">{selectedTier}</span>.
+                You're interested in the <span className="font-bold">{selectedTierObj.name}</span> tier ({selectedTierObj.price}).
                 <br/>Please send me an email.
               </p>
             </div>

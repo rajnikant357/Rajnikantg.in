@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, MessageCircle, Loader2 } from 'lucide-react';
 import { getChatResponse } from '../services/chatService';
 import { ChatMessage } from '../types';
-import { contactLinks } from '../data/chatData';
+import { useAdminData } from '../src/context/AdminDataContext';
 
 export const StickyNoteChat: React.FC = () => {
+  const { data } = useAdminData();
+
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -34,7 +36,7 @@ export const StickyNoteChat: React.FC = () => {
 
     setTimeout(async () => {
       try {
-        const responseText = await getChatResponse(userMsg.text);
+        const responseText = await getChatResponse(userMsg.text, data.chatIntents, data.chatKnowledge);
         setMessages(prev => [...prev, { role: 'model', text: responseText }]);
       } catch (error) {
         setMessages(prev => [...prev, { role: 'model', text: "Sorry, I got a papercut. Try again.", isError: true }]);
@@ -88,7 +90,7 @@ export const StickyNoteChat: React.FC = () => {
                     : 'bg-white/60 text-gray-800 shadow-sm -rotate-1'
                 }`}
               >
-                {renderMessage(msg.text)}
+                {renderMessage(msg.text, data.contact)}
               </div>
             </div>
           ))}
@@ -126,7 +128,7 @@ export const StickyNoteChat: React.FC = () => {
 };
 
 // Helper to render message text with clickable contact links when patterns match
-function renderMessage(text: string) {
+function renderMessage(text: string, contact: any) {
   // If no line breaks, still handle single-line containing contact info
   const lines = text.split(/\r?\n/);
   return (
@@ -139,7 +141,7 @@ function renderMessage(text: string) {
           const label = callMatch[0].replace(/call\s*-\s*/i, 'call - ');
           return (
             <div key={i}>
-              <a href={contactLinks.phone} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a href={`tel:${contact.phone || ''}`} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
             </div>
           );
         }
@@ -149,7 +151,7 @@ function renderMessage(text: string) {
           const label = mailMatch[0].replace(/mail\s*-\s*/i, 'mail - ');
           return (
             <div key={i}>
-              <a href={contactLinks.mail} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a href={`mailto:${contact.email || ''}`} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
             </div>
           );
         }
@@ -159,7 +161,7 @@ function renderMessage(text: string) {
           const label = linkedinMatch[0].replace(/linkedin\s*-\s*/i, 'linkedin - ');
           return (
             <div key={i}>
-              <a href={contactLinks.linkedin} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a href={contact.linkedin || ''} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
             </div>
           );
         }
@@ -169,7 +171,7 @@ function renderMessage(text: string) {
           const label = trimmed.replace(/^(x\/twitter|x|twitter)\s*-\s*/i, 'X/twitter - ');
           return (
             <div key={i}>
-              <a href={contactLinks.twitter} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a href={contact.twitter || ''} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
             </div>
           );
         }

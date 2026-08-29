@@ -1,116 +1,334 @@
 import { Project } from '../types';
 
+import alankariniImage from '../Screenshots/Alnkarini mehandi art.png';
+import gazalImage from '../Screenshots/Gazal suit ghar.png';
+import locallinkImage from '../Screenshots/Locallink.png';
+import pacmanImage from '../Screenshots/Pac Man Clone.png';
+import pankajImage from '../Screenshots/Pankaj consultancy.png';
+import paperfolioImage from '../Screenshots/Paper Ui Admin Dashboard.png';
+import prometrionAiImage from '../Screenshots/Prometrion ai.png';
+import prometrionImage from '../Screenshots/prometrion.png';
+import qualyticsImage from '../Screenshots/Qualytics ai.png';
+import quizGameImage from '../Screenshots/Quiz game.png';
+import sharprImage from '../Screenshots/Sharpr.png';
+import skribbleImage from '../Screenshots/Skribble.png';
+import studyAcademyImage from '../Screenshots/Study Academy.png';
+import ultronImage from '../Screenshots/Ultron.png';
+import zacsonImage from '../Screenshots/Zacson.png';
+
 export const projectsData: Project[] = [
   {
     id: 'prometrion',
-    title: 'PROMETRION',
-    tagline: 'Battleground for the Next Gen Developers.',
-    subTagline: '“Hackathons, minithons, and daily contests that push your skills to the next level.”',
-    image: 'https://picsum.photos/seed/prometrion_full/800/400', // Placeholder for full size screenshot
-    demoLink: 'https://example.com/prometrion',
-    repoLink: 'https://github.com/rajnikant/prometrion',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Docker', 'AWS'],
-    overview: 'Prometrion is a next-generation platform that unifies online and offline coding competitions into one seamless ecosystem. It enables companies, colleges, communities, and high-level users to host hackathons, minithons, and daily coding contests—complete with real-time coding collaboration, automated certificate generation, team management, and judging workflows.\n\nPrometrion aims to become the #1 global hub for competitive coding, where coders participate, host, learn, win, and build their identity.',
+    title: 'Prometrion',
+    tagline: 'Battleground for the next generation of developers.',
+    subTagline: 'Hackathons, minithons, and coding contests in one competitive ecosystem.',
+    image: prometrionImage,
+    demoLink: 'https://www.prometrion.com/',
+    techStack: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Realtime'],
+    overview: 'Prometrion is a developer competition platform for hosting hackathons, minithons, and daily coding contests. It is designed for students, communities, colleges, and companies that need a complete competition workflow from registration to judging.',
     problem: [
-      'Offline events lack submission, judging & certificate systems',
-      'Online platforms handle only partial workflows',
-      'Participants do not have a unified coding identity',
-      'Hosts struggle with event management',
-      'Companies lack a transparent talent discovery pipeline',
-      'There is no single platform that integrates the end-to-end hackathon lifecycle—online + offline.'
+      'Hackathon organizers often manage registration, submissions, teams, judging, and certificates across separate tools.',
+      'Participants do not get one clean place to build a competitive coding identity.',
+      'Offline events need better digital workflows without losing the energy of in-person collaboration.',
     ],
     solution: {
-      intro: 'Prometrion consolidates the entire hackathon ecosystem:',
+      intro: 'Prometrion brings the competition lifecycle into one focused platform.',
       features: [
-        'Full Hackathons (Companies, Admin, Level 50+ users)',
-        'Minithons (3-hour rapid contests by Level 30+ users)',
-        'Daily Contests (Admin + Level 10+ users)',
-        'Offline Hackathon Enrollment',
-        'Real-Time Collaborative Code Editor',
-        'Teams, Projects, & Submissions',
-        'Judge Dashboards & Evaluation Tools',
-        'Certificates (Gold, Silver, Participant)',
-        'Leveling, Badges & Gamified User Growth'
+        'Hackathon and minithon hosting flows',
+        'Team, project, and submission management',
+        'Participant profiles with growth and recognition',
+        'Judging and certificate-ready event workflows',
       ],
-      summary: 'Prometrion becomes a coder’s competition profile + portfolio + skill identity.'
+      summary: 'A single home for coders to compete, build, prove skill, and get noticed.',
     },
     market: [
-      'India: 8,000+ colleges, 40,000+ annual tech fests',
-      'Global hackathon industry growing rapidly',
-      'No dominant hybrid (online + offline) platform',
-      'Large unmet demand from colleges & companies',
-      'Prometrion fills a crucial gap with an end-to-end solution.'
+      'Colleges and tech communities running recurring coding events',
+      'Companies searching for talent through practical challenges',
+      'Student developers who want visible proof of their skills',
     ],
     vision: [
-      '“The name every coder remembers when they think of hackathons, and coding competition.”',
-      'A global competition universe where coders: Build real projects, Compete & win, Earn recognition, Get hired',
-      'Prometrion aims to be the default platform for all coding competitions worldwide.'
-    ]
+      'To make Prometrion the default place developers remember when they think of hackathons and coding competitions.',
+    ],
+  },
+  {
+    id: 'sharpr',
+    title: 'Sharpr',
+    tagline: 'A crisp product experience for sharpening ideas.',
+    subTagline: 'A modern web app focused on clarity, speed, and polished presentation.',
+    image: sharprImage,
+    demoLink: 'https://www.sharpr.in/',
+    techStack: ['React', 'Tailwind CSS', 'Vite', 'Responsive UI'],
+    overview: 'Sharpr is a polished web product built around a clean user experience and sharp visual hierarchy. The interface keeps the focus on the product while staying fast and responsive across devices.',
+    problem: [
+      'Many early product pages feel either too generic or too visually noisy.',
+      'Users need to understand the core offer quickly without digging through clutter.',
+    ],
+    solution: {
+      intro: 'Sharpr uses a focused interface and direct content flow.',
+      features: ['Responsive landing experience', 'Clear section hierarchy', 'Fast Vite build', 'Reusable React components'],
+      summary: 'A neat, focused product interface that gets out of the user\'s way.',
+    },
+    market: ['Startup landing pages', 'Small SaaS products', 'Product experiments that need fast validation'],
+    vision: ['To keep improving into a sharper, conversion-friendly product surface.'],
   },
   {
     id: 'paperfolio',
     title: 'Paperfolio',
-    tagline: 'Personal Notebook Website.',
-    subTagline: '“A digital portfolio that feels like a physical journal.”',
-    image: 'https://picsum.photos/seed/paperfolio_full/800/400',
-    demoLink: '#',
-    repoLink: 'https://github.com/rajnikant/paperfolio',
-    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'Vite'],
-    overview: 'Paperfolio is a creative portfolio template built with React and Tailwind CSS. It mimics the look and feel of a physical student notebook, complete with paper textures, handwriting fonts, and "taped" photos.',
+    tagline: 'A notebook-style personal portfolio.',
+    subTagline: 'This portfolio, shaped like a handwritten paper desk experience.',
+    image: paperfolioImage,
+    demoLink: 'https://www.rajnikantg.in/',
+    repoLink: 'https://github.com/rajnikant357',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'LocalStorage'],
+    overview: 'Paperfolio is my personal portfolio with a physical notebook aesthetic: lined paper, handwritten typography, taped photos, sticky notes, and an admin panel for editing portfolio content.',
     problem: [
-      'Standard portfolios look too corporate and boring',
-      'Hard to express personality in minimal themes',
-      'Lack of interactive elements that feel organic'
+      'Most developer portfolios feel too similar and forgettable.',
+      'Portfolio content needs to be easy to update without rebuilding every section manually.',
     ],
     solution: {
-      intro: 'A nostalgic, tactile design language:',
-      features: [
-        'Realistic lined paper background (CSS)',
-        'Handwritten fonts (Patrick Hand, Permanent Marker)',
-        'Sticky note chat assistant integration',
-        'Dark mode "Dark Copy" aesthetic'
-      ],
-      summary: 'Making web portfolios fun and personal again.'
+      intro: 'Paperfolio combines personality-led UI with editable portfolio data.',
+      features: ['Notebook paper layout', 'Polaroid project cards', 'Dark copy mode', 'Client-side admin panel'],
+      summary: 'A personal site that feels handmade while still behaving like a real product.',
     },
-    market: [
-      'Creative developers',
-      'Designers looking for retro aesthetics',
-      'Students wanting to stand out'
-    ],
-    vision: [
-      'To provide a unique, memorable browsing experience that stands out in a sea of sterile minimalist websites.'
-    ]
+    market: ['Personal branding', 'Developer portfolios', 'Creative frontend showcases'],
+    vision: ['To make the portfolio feel memorable, personal, and easy to keep fresh.'],
   },
   {
-    id: 'gemini-vision',
-    title: 'Gemini Vision',
-    tagline: 'AI Image Analyzer.',
-    subTagline: '“Leveraging Google Gemini API to see the world.”',
-    image: 'https://picsum.photos/seed/gemini_full/800/400',
-    demoLink: '#',
-    repoLink: 'https://github.com/rajnikant/gemini-vision',
-    techStack: ['React', 'Google GenAI SDK', 'Tailwind CSS', 'HTML5 Drag & Drop'],
-    overview: 'An experimental application that uses Google\'s Gemini Multimodal API to analyze images, generate captions, and answer questions about visual content in real-time.',
-    problem: [
-      'Accessing advanced AI vision models is often complex',
-      'Lack of simple UI for testing prompts with images'
-    ],
+    id: 'ultron',
+    title: 'Ultron',
+    tagline: 'A bold AI-themed web interface.',
+    subTagline: 'A futuristic frontend experiment with a sharp product feel.',
+    image: ultronImage,
+    demoLink: 'https://ultron-psi-snowy.vercel.app/',
+    techStack: ['React', 'Tailwind CSS', 'Vercel', 'Frontend UI'],
+    overview: 'Ultron is a futuristic web interface experiment built to explore bold layouts, strong visual direction, and responsive frontend interactions.',
+    problem: ['AI-themed products often need a stronger first impression than plain dashboard UI can provide.'],
     solution: {
-      intro: 'A straightforward interface for Gemini Vision:',
-      features: [
-        'Drag and drop image upload',
-        'Real-time streaming responses',
-        'Contextual chat based on image content'
-      ],
-      summary: 'Democratizing access to multimodal AI.'
+      intro: 'Ultron creates a focused, high-impact interface.',
+      features: ['Strong visual identity', 'Responsive page sections', 'Deployed frontend build'],
+      summary: 'A confident frontend concept for an AI-style product.',
     },
-    market: [
-      'AI enthusiasts',
-      'Developers learning GenAI',
-      'Accessibility tools'
-    ],
-    vision: [
-      'To explore the limits of what browser-based AI integrations can do with zero backend overhead.'
-    ]
-  }
+    market: ['AI product demos', 'Frontend experiments', 'Concept landing pages'],
+    vision: ['To turn the concept into a deeper AI utility with real workflows.'],
+  },
+  {
+    id: 'prometrion-ai',
+    title: 'Prometrion AI',
+    tagline: 'AI companion for the Prometrion ecosystem.',
+    subTagline: 'A focused AI frontend for developer competition workflows.',
+    image: prometrionAiImage,
+    demoLink: 'https://prometrion-ai-frontend.vercel.app/',
+    techStack: ['React', 'AI UI', 'Tailwind CSS', 'Vercel'],
+    overview: 'Prometrion AI explores how AI can support developer competitions, from guidance and summaries to smarter participant and organizer workflows.',
+    problem: ['Competition platforms can overwhelm users with rules, tasks, submissions, and deadlines.'],
+    solution: {
+      intro: 'Prometrion AI gives the ecosystem a lighter, assistant-driven layer.',
+      features: ['AI-first interface', 'Competition-focused UX', 'Fast hosted prototype'],
+      summary: 'A step toward smarter support inside developer contests.',
+    },
+    market: ['Hackathon platforms', 'Student developer tools', 'AI-assisted education products'],
+    vision: ['To become the intelligent layer that helps Prometrion users move faster.'],
+  },
+  {
+    id: 'paper-ui-admin-dashboard',
+    title: 'Paper UI Admin Dashboard',
+    tagline: 'A dashboard with a handcrafted paper UI twist.',
+    subTagline: 'Admin controls designed with notebook charm instead of corporate sameness.',
+    image: paperfolioImage,
+    demoLink: 'https://admin-dashboard-eight-theta-74.vercel.app/',
+    techStack: ['React', 'Tailwind CSS', 'Dashboard UI', 'Vercel'],
+    overview: 'Paper UI Admin Dashboard is an admin interface experiment that mixes practical dashboard structure with the tactile paper-inspired design language used across Paperfolio.',
+    problem: ['Admin dashboards are often useful but visually bland and tiring to scan.'],
+    solution: {
+      intro: 'The dashboard keeps common admin patterns while adding a handmade layer.',
+      features: ['Admin-style sections', 'Paper UI styling', 'Responsive layout', 'Hosted demo'],
+      summary: 'A useful dashboard surface with a little personality in the margins.',
+    },
+    market: ['Internal tools', 'Admin panels', 'Design-forward dashboards'],
+    vision: ['To refine a reusable paper-style admin system for future products.'],
+  },
+  {
+    id: 'qualytics-ai',
+    title: 'Qualytics AI',
+    tagline: 'A polished AI analytics clone.',
+    subTagline: 'A frontend rebuild focused on layout precision and SaaS presentation.',
+    image: qualyticsImage,
+    demoLink: 'https://rajnikant357.github.io/qualytics-ai-clone/',
+    repoLink: 'https://github.com/rajnikant357/qualytics-ai-clone',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],
+    overview: 'Qualytics AI is a frontend clone built to practice SaaS layout, section composition, spacing, and visual consistency across a production-style marketing page.',
+    problem: ['Recreating polished SaaS interfaces requires careful attention to hierarchy, spacing, and responsiveness.'],
+    solution: {
+      intro: 'The clone breaks down a professional AI product page into reusable frontend sections.',
+      features: ['Responsive sections', 'SaaS-style visual hierarchy', 'Static deployment', 'Pixel-focused frontend practice'],
+      summary: 'A practical exercise in building polished product-page UI.',
+    },
+    market: ['Frontend practice', 'SaaS UI studies', 'Portfolio case studies'],
+    vision: ['To keep improving precision by studying and rebuilding high-quality interfaces.'],
+  },
+  {
+    id: 'locallink',
+    title: 'LocalLink',
+    tagline: 'A local service connection platform.',
+    subTagline: 'Helping people discover nearby services with a clean web experience.',
+    image: locallinkImage,
+    demoLink: 'https://new-locallink.vercel.app/',
+    techStack: ['React', 'Node.js', 'Tailwind CSS', 'Vercel'],
+    overview: 'LocalLink is a local discovery platform concept for connecting users with nearby services and providers through a straightforward, responsive interface.',
+    problem: ['Local service discovery can feel scattered across calls, messages, and unreliable listings.'],
+    solution: {
+      intro: 'LocalLink organizes local service discovery into a more direct flow.',
+      features: ['Service listing UI', 'Responsive browsing experience', 'Clean provider-focused layout'],
+      summary: 'A simpler way to explore and connect with local service options.',
+    },
+    market: ['Local businesses', 'Service marketplaces', 'Community discovery tools'],
+    vision: ['To become a practical bridge between nearby providers and people who need them.'],
+  },
+  {
+    id: 'pacman-clone',
+    title: 'Pac Man Clone',
+    tagline: 'Classic arcade gameplay rebuilt for the browser.',
+    subTagline: 'A small game project focused on movement, collision, and nostalgic fun.',
+    image: pacmanImage,
+    demoLink: 'https://pacman-clone-virid.vercel.app/',
+    techStack: ['JavaScript', 'Game Logic', 'HTML', 'CSS'],
+    overview: 'Pac Man Clone recreates the spirit of the classic arcade game in the browser, with grid movement, collectibles, scoring, and responsive controls.',
+    problem: ['Game projects are a fun way to practice logic-heavy frontend programming beyond normal page layouts.'],
+    solution: {
+      intro: 'The clone focuses on core arcade mechanics.',
+      features: ['Grid-based movement', 'Score tracking', 'Collision handling', 'Browser deployment'],
+      summary: 'A compact game build that strengthens interactive JavaScript fundamentals.',
+    },
+    market: ['Browser games', 'JavaScript practice', 'Portfolio game demos'],
+    vision: ['To keep expanding game logic skills through small, playable experiments.'],
+  },
+  {
+    id: 'quiz-game',
+    title: 'Quiz Game',
+    tagline: 'A fast browser quiz experience.',
+    subTagline: 'Questions, choices, scorekeeping, and instant feedback in a simple game flow.',
+    image: quizGameImage,
+    demoLink: 'https://rajnikant357.github.io/Quiz-Game/',
+    repoLink: 'https://github.com/rajnikant357/Quiz-Game',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],
+    overview: 'Quiz Game is a lightweight browser game that tests users through multiple-choice questions and keeps the interaction quick, clear, and replayable.',
+    problem: ['Interactive learning tools need simple flows that do not distract from the questions themselves.'],
+    solution: {
+      intro: 'Quiz Game keeps the loop direct and easy to understand.',
+      features: ['Question flow', 'Multiple-choice answers', 'Score tracking', 'Static hosting'],
+      summary: 'A clean practice project for interactive DOM logic.',
+    },
+    market: ['Learning games', 'Frontend fundamentals', 'Student projects'],
+    vision: ['To grow into a more configurable quiz maker with categories and difficulty levels.'],
+  },
+  {
+    id: 'study-academy',
+    title: 'Study Academy',
+    tagline: 'Education landing page for learners.',
+    subTagline: 'A focused academy site with course-style presentation and responsive sections.',
+    image: studyAcademyImage,
+    demoLink: 'https://study-academy-mu.vercel.app/',
+    techStack: ['React', 'Tailwind CSS', 'Education UI', 'Vercel'],
+    overview: 'Study Academy is an education-themed website built to present learning programs with a clear structure, readable content, and a student-friendly interface.',
+    problem: ['Education websites need to be trustworthy, readable, and easy to navigate for students.'],
+    solution: {
+      intro: 'Study Academy uses familiar course-site patterns.',
+      features: ['Course-style sections', 'Responsive layout', 'Clear CTAs', 'Hosted frontend'],
+      summary: 'A clean education web experience for presenting learning opportunities.',
+    },
+    market: ['Coaching centers', 'Online academies', 'Education landing pages'],
+    vision: ['To develop into a fuller academy platform with courses and student dashboards.'],
+  },
+  {
+    id: 'gazal-suit-ghar',
+    title: 'Gazal Suit Ghar',
+    tagline: 'Boutique storefront for ethnic fashion.',
+    subTagline: 'A product-focused website for showcasing suits and fashion collections.',
+    image: gazalImage,
+    demoLink: 'https://gazal-suit-ghar.vercel.app/',
+    techStack: ['React', 'Tailwind CSS', 'Storefront UI', 'Vercel'],
+    overview: 'Gazal Suit Ghar is a fashion storefront concept for presenting ethnic clothing collections with attractive product visuals and a simple browsing experience.',
+    problem: ['Small boutiques need digital storefronts that feel attractive without becoming hard to maintain.'],
+    solution: {
+      intro: 'The site gives the boutique a clean product-first web presence.',
+      features: ['Collection showcase', 'Fashion-focused layout', 'Responsive product sections', 'Vercel deployment'],
+      summary: 'A simple storefront that helps a local fashion brand look polished online.',
+    },
+    market: ['Boutiques', 'Small fashion shops', 'Local ecommerce starters'],
+    vision: ['To evolve into a complete catalog and inquiry-based shopping experience.'],
+  },
+  {
+    id: 'skribble-clone',
+    title: 'Skribble Clone',
+    tagline: 'A drawing-game inspired browser project.',
+    subTagline: 'A playful clone focused on creative interaction and game-like UI.',
+    image: skribbleImage,
+    demoLink: 'https://rajnikant357.github.io/skribble-clone/',
+    repoLink: 'https://github.com/rajnikant357/skribble-clone',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Canvas'],
+    overview: 'Skribble Clone is a browser drawing-game experiment inspired by sketch-and-guess gameplay, built to practice interactive canvas-style UI and playful frontend patterns.',
+    problem: ['Drawing interactions require a different kind of frontend thinking than static pages.'],
+    solution: {
+      intro: 'The project focuses on drawing-friendly interaction patterns.',
+      features: ['Drawing interface', 'Game-inspired layout', 'Canvas-style interaction', 'Static deployment'],
+      summary: 'A playful frontend build that explores creative browser input.',
+    },
+    market: ['Casual web games', 'Canvas experiments', 'Interactive frontend demos'],
+    vision: ['To add richer multiplayer-style mechanics and smoother drawing tools.'],
+  },
+  {
+    id: 'alankarini-mehandi-art',
+    title: 'Alankarini Mehandi Art',
+    tagline: 'Elegant website for a mehndi artist.',
+    subTagline: 'A visual service portfolio for bridal and event mehndi work.',
+    image: alankariniImage,
+    demoLink: 'https://alankarini-mehandi-art.vercel.app/',
+    techStack: ['React', 'Tailwind CSS', 'Service Website', 'Vercel'],
+    overview: 'Alankarini Mehandi Art is a service portfolio for a mehndi artist, designed to showcase artistry, services, and contact paths in a graceful and mobile-friendly layout.',
+    problem: ['Artists and local service providers need a beautiful web presence that quickly builds trust.'],
+    solution: {
+      intro: 'The site presents work, services, and contact details in a visual flow.',
+      features: ['Artist portfolio layout', 'Service sections', 'Mobile-friendly design', 'Clear inquiry path'],
+      summary: 'A warm, visual web presence for a creative local business.',
+    },
+    market: ['Mehndi artists', 'Beauty services', 'Wedding service providers'],
+    vision: ['To become a fuller booking and gallery experience for clients.'],
+  },
+  {
+    id: 'zacson',
+    title: 'Zacson',
+    tagline: 'A brand-style web page with strong visual polish.',
+    subTagline: 'A responsive frontend build for practicing modern brand presentation.',
+    image: zacsonImage,
+    demoLink: 'https://rajnikant357.github.io/Zacson/',
+    repoLink: 'https://github.com/rajnikant357/Zacson',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],
+    overview: 'Zacson is a brand-style web page created to practice clean layout, responsive sections, and crisp visual presentation in a static frontend project.',
+    problem: ['Static sites still need thoughtful structure and polish to feel complete.'],
+    solution: {
+      intro: 'Zacson uses a direct brand-page structure.',
+      features: ['Responsive static layout', 'Brand-focused sections', 'GitHub Pages hosting', 'Frontend fundamentals'],
+      summary: 'A neat static website exercise with a product-brand feel.',
+    },
+    market: ['Static websites', 'Brand pages', 'Frontend practice'],
+    vision: ['To keep improving static-site quality through stronger layout and content direction.'],
+  },
+  {
+    id: 'pankaj-consultancy',
+    title: 'Pankaj Consultancy',
+    tagline: 'Professional consultancy website.',
+    subTagline: 'A trust-focused website for presenting services and contact information.',
+    image: pankajImage,
+    demoLink: 'https://pankaj-consultancy-123.vercel.app/',
+    techStack: ['React', 'Tailwind CSS', 'Business Website', 'Vercel'],
+    overview: 'Pankaj Consultancy is a business website built to present consulting services, credibility, and contact details through a clean and professional interface.',
+    problem: ['Consultancy businesses need simple digital credibility without overwhelming visitors.'],
+    solution: {
+      intro: 'The site focuses on trust, services, and easy contact.',
+      features: ['Service presentation', 'Professional layout', 'Responsive pages', 'Hosted deployment'],
+      summary: 'A practical website for turning visitors into consultancy inquiries.',
+    },
+    market: ['Consultancies', 'Small businesses', 'Professional service providers'],
+    vision: ['To expand into a richer lead-generation and service-detail platform.'],
+  },
 ];
