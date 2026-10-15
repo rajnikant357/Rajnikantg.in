@@ -2,12 +2,21 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Serve static assets from Vite dist output
+const distPath = path.join(__dirname, '../dist');
+app.use(express.static(distPath));
 
 app.post('/api/send-partner-email', async (req, res) => {
   const { name, email, message, tier } = req.body || {};
@@ -42,5 +51,11 @@ app.post('/api/send-partner-email', async (req, res) => {
   }
 });
 
+// Wildcard SPA route fallback to /index.html with status 200
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
 const port = Number(process.env.PORT || 5175);
-app.listen(port, () => console.log(`Email API server listening on port ${port}`));
+app.listen(port, () => console.log(`Email API & SPA server listening on port ${port}`));
+

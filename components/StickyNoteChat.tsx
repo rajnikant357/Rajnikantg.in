@@ -13,26 +13,90 @@ export const StickyNoteChat: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     { role: 'model', text: "Hi! I'm Paper Pots, Rajnikant's AI assistant. Scribble a question below!" }
   ]);
+
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messageElementsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+  // Auto-focus input when chat opens
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, isOpen]);
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 150);
+    }
+  }, [isOpen]);
+
+  // Intelligent scroll handler:
+  // - When user asks a question: scroll to bottom so the user's question and writing indicator are visible.
+  // - When model responds: scroll so the question and the start of the response are visible from the top,
+  //   preventing the response from getting pushed down to the bottom and cut off.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const lastIdx = messages.length - 1;
+    const lastMsg = messages[lastIdx];
+    if (!lastMsg) return;
+
+    const timer = setTimeout(() => {
+      const container = messagesContainerRef.current;
+      if (!container) return;
+
+      if (lastMsg.role === 'user') {
+        // User asked something -> scroll to bottom to see question & loading state
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      } else if (lastMsg.role === 'model') {
+        if (messages.length <= 1) {
+          // Initial greeting message: show from top
+          container.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+
+        // Locate the user's question that prompted this answer
+        const userIdx = lastIdx - 1;
+        const userEl = userIdx >= 0 ? messageElementsRef.current[userIdx] : null;
+        const modelEl = messageElementsRef.current[lastIdx];
+
+        if (userEl && modelEl) {
+          const userTop = userEl.offsetTop - container.offsetTop;
+          const userHeight = userEl.offsetHeight;
+
+          // If user question is of standard height, scroll so question + top of response are in view
+          if (userHeight < 120) {
+            container.scrollTo({
+              top: Math.max(0, userTop - 8),
+              behavior: 'smooth'
+            });
+          } else {
+            // If user question is very tall, align to start of model answer
+            const modelTop = modelEl.offsetTop - container.offsetTop;
+            container.scrollTo({
+              top: Math.max(0, modelTop - 8),
+              behavior: 'smooth'
+            });
+          }
+        } else if (modelEl) {
+          const modelTop = modelEl.offsetTop - container.offsetTop;
+          container.scrollTo({
+            top: Math.max(0, modelTop - 8),
+            behavior: 'smooth'
+          });
+        }
+      }
+    }, 60);
+
+    return () => clearTimeout(timer);
+  }, [messages, isOpen, loading]);
 
   const handleSend = async () => {
     if (!input.trim() || loading) return;
 
-    const userMsg: ChatMessage = { role: 'user', text: input };
+    const userMsg: ChatMessage = { role: 'user', text: input.trim() };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
     setLoading(true);
 
-    // Simulate a small network/thinking delay for realism
-    const delay = 600 + Math.random() * 800; // 0.6s to 1.4s
+    // Simulate thinking delay for natural feel
+    const delay = 600 + Math.random() * 600;
 
     setTimeout(async () => {
       try {
@@ -50,14 +114,14 @@ export const StickyNoteChat: React.FC = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 transform hover:scale-110 transition-transform duration-300"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 transform hover:scale-110 active:scale-95 transition-transform duration-300 cursor-pointer"
         aria-label="Open Chat"
       >
         <div className="relative group">
            <div className="absolute inset-0 bg-yellow-400 rotate-3 rounded shadow-md group-hover:rotate-6 transition-transform"></div>
-           <div className="relative bg-yellow-200 text-yellow-900 p-4 rounded shadow-lg border border-yellow-300 font-hand text-xl font-bold flex items-center gap-2">
-             <MessageCircle size={24} />
-             <span>Paper Pots</span>
+           <div className="relative bg-yellow-200 text-yellow-900 p-3 sm:p-4 rounded shadow-lg border border-yellow-300 font-hand text-lg sm:text-xl font-bold flex items-center gap-2">
+             <MessageCircle size={22} className="text-yellow-800" />
+             <span>Paper Pots 🪴</span>
            </div>
         </div>
       </button>
@@ -65,15 +129,20 @@ export const StickyNoteChat: React.FC = () => {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-80 sm:w-96 font-hand">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-96 max-w-[420px] font-hand">
       {/* Sticky Note Visuals */}
-      <div className="relative bg-yellow-200 shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-sm p-4 transform -rotate-1 border-t border-yellow-100">
+      <div className="relative bg-yellow-200 shadow-[0_12px_30px_rgba(0,0,0,0.25)] rounded-sm p-4 transform -rotate-1 border-t-2 border-yellow-100">
         {/* Tape Effect */}
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-amber-900/20 rotate-1 backdrop-blur-sm drop-shadow-sm tape-serrated"></div>
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-amber-900/20 rotate-1 backdrop-blur-sm drop-shadow-sm tape-serrated pointer-events-none"></div>
 
         {/* Header */}
-        <div className="flex justify-between items-center mb-4 border-b border-yellow-300 pb-2">
-          <h3 className="text-xl font-bold text-yellow-900">Paper Pots 🪴</h3>
+        <div className="flex justify-between items-center mb-3 border-b-2 border-yellow-300 pb-2">
+          <div className="flex items-center gap-2">
+            <h3 className="text-xl font-bold text-yellow-900 font-marker">Paper Pots 🪴</h3>
+            <span className="text-xs bg-yellow-300/80 text-yellow-950 px-1.5 py-0.5 rounded border border-yellow-400 font-hand font-bold tracking-wider">
+              AI ASSISTANT
+            </span>
+          </div>
           <button 
             onClick={() => setIsOpen(false)} 
             style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px' }}
@@ -81,49 +150,87 @@ export const StickyNoteChat: React.FC = () => {
             aria-label="Close Chat"
             className="flex items-center justify-center p-1 sm:p-1.5 border-[2px] sm:border-[2.5px] border-slate-600 text-slate-700 hover:bg-white bg-white/90 shadow-sm transform -rotate-2 hover:rotate-0 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
           >
-            <X size={18} className="stroke-[2]" />
+            <X size={18} className="stroke-[2.5]" />
           </button>
         </div>
 
-        {/* Messages Area */}
-        <div className="h-64 overflow-y-auto pr-2 custom-scrollbar mb-4 space-y-3">
+        {/* Messages Area — taller, high contrast, clean scrollbar */}
+        <div 
+          ref={messagesContainerRef}
+          style={{ scrollbarWidth: 'thin', scrollbarColor: '#d97706 transparent' }}
+          className="h-80 sm:h-96 max-h-[55vh] overflow-y-auto pr-2 mb-3 space-y-3.5 scroll-smooth"
+        >
           {messages.map((msg, idx) => (
-            <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div 
+              key={idx} 
+              ref={el => { messageElementsRef.current[idx] = el; }}
+              className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
+            >
+              {/* Role badge */}
               <div 
-                className={`max-w-[85%] p-2 rounded-lg text-lg leading-6 whitespace-pre-line ${
+                className={`flex items-center gap-1 mb-1 text-xs font-marker select-none ${
+                  msg.role === 'user' ? 'text-sky-900/80 pr-1' : 'text-amber-900/80 pl-1'
+                }`}
+              >
+                {msg.role === 'user' ? (
+                  <>
+                    <span>You</span>
+                    <span>✍️</span>
+                  </>
+                ) : (
+                  <>
+                    <span>🪴 Paper Pots</span>
+                  </>
+                )}
+              </div>
+
+              {/* Chat Bubble Card */}
+              <div 
+                className={`max-w-[88%] rounded-sm text-lg sm:text-xl leading-relaxed transition-all duration-200 ${
                   msg.role === 'user' 
-                    ? 'bg-yellow-300 text-yellow-900 shadow-sm rotate-1' 
-                    : 'bg-white/60 text-gray-800 shadow-sm -rotate-1'
+                    ? 'bg-sky-100/95 text-slate-900 border border-sky-300 shadow-[1px_2px_5px_rgba(0,0,0,0.08)] px-3.5 py-2 rotate-0.5 hover:rotate-0' 
+                    : msg.isError
+                      ? 'bg-red-50 text-red-900 border border-red-300 shadow-sm px-3.5 py-2.5 -rotate-0.5'
+                      : 'bg-white text-slate-900 border border-amber-200 shadow-[2px_3px_8px_rgba(0,0,0,0.12)] px-3.5 py-2.5 -rotate-0.5 hover:rotate-0'
                 }`}
               >
                 {renderMessage(msg.text, data.contact)}
               </div>
             </div>
           ))}
+
+          {/* Real-time scribbling loader */}
           {loading && (
-             <div className="flex justify-start">
-               <div className="bg-white/60 p-2 rounded-lg -rotate-1">
-                 <Loader2 className="animate-spin text-yellow-700" size={20} />
+             <div className="flex flex-col items-start animate-in fade-in duration-200">
+               <div className="flex items-center gap-1 mb-1 text-xs font-marker text-amber-900/80 pl-1 select-none">
+                 <span>🪴 Paper Pots</span>
+               </div>
+               <div className="bg-white/95 text-slate-800 border border-amber-200 shadow-sm px-3.5 py-2 rounded-sm -rotate-0.5 flex items-center gap-2 text-lg">
+                 <Loader2 className="animate-spin text-amber-700 shrink-0" size={18} />
+                 <span className="text-amber-950/80 italic font-medium">Scribbling an answer...</span>
                </div>
              </div>
           )}
-          <div ref={messagesEndRef} />
+          <div ref={messagesEndRef} className="h-1" />
         </div>
 
         {/* Input Area */}
-        <div className="relative">
+        <div className="relative pt-1 border-t border-yellow-300/60">
           <input 
+            ref={inputRef}
             type="text" 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Scribble a question..."
-            className="w-full bg-yellow-100 border-b-2 border-yellow-400 focus:border-yellow-600 outline-none px-2 py-1 text-xl placeholder-yellow-800/50 text-yellow-900 pr-10"
+            className="w-full bg-yellow-100/80 border-b-2 border-yellow-400 focus:border-yellow-600 outline-none px-2.5 py-1.5 text-xl placeholder-yellow-800/50 text-yellow-950 pr-10 rounded-none transition-colors"
           />
           <button 
             onClick={handleSend}
-            disabled={loading}
-            className="absolute right-0 bottom-1 text-yellow-800 hover:text-yellow-950 disabled:opacity-50"
+            disabled={loading || !input.trim()}
+            className="absolute right-1 bottom-2 text-yellow-800 hover:text-yellow-950 disabled:opacity-30 disabled:cursor-not-allowed transition-all p-1 cursor-pointer hover:scale-110 active:scale-95"
+            title="Send scribbled message"
+            aria-label="Send message"
           >
             <Send size={20} />
           </button>
@@ -133,58 +240,121 @@ export const StickyNoteChat: React.FC = () => {
   );
 };
 
-// Helper to render message text with clickable contact links when patterns match
+// Helper to render URLs within text strings
+function renderLineWithLinks(line: string) {
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
+  const parts = line.split(urlRegex);
+  if (parts.length === 1) return line;
+
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      const href = part.startsWith('www.') ? `https://${part}` : part;
+      return (
+        <a
+          key={index}
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-600 hover:text-blue-800 font-bold underline decoration-wavy underline-offset-2 break-all"
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
+// Helper to render message text with clickable contact links and proper line height
 function renderMessage(text: string, contact: any) {
-  // If no line breaks, still handle single-line containing contact info
   const lines = text.split(/\r?\n/);
   return (
-    <div>
+    <div className="space-y-1">
       {lines.map((line, i) => {
         const trimmed = line.trim();
-        // call - +91 7084202503
+
+        // Phone: call - +91 7084202503
         const callMatch = trimmed.match(/^call\s*-\s*(.+)$/i);
         if (callMatch) {
           const label = callMatch[0].replace(/call\s*-\s*/i, 'call - ');
           return (
             <div key={i}>
-              <a href={`tel:${contact.phone || ''}`} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a 
+                href={`tel:${contact?.phone || ''}`} 
+                className="font-bold text-blue-600 hover:text-blue-800 underline decoration-wavy underline-offset-2" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                {label}
+              </a>
             </div>
           );
         }
 
+        // Email: mail - ...
         const mailMatch = trimmed.match(/^mail\s*-\s*(.+)$/i);
         if (mailMatch) {
           const label = mailMatch[0].replace(/mail\s*-\s*/i, 'mail - ');
           return (
             <div key={i}>
-              <a href={`mailto:${contact.email || ''}`} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a 
+                href={`mailto:${contact?.email || ''}`} 
+                className="font-bold text-blue-600 hover:text-blue-800 underline decoration-wavy underline-offset-2" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                {label}
+              </a>
             </div>
           );
         }
 
+        // LinkedIn: linkedin - ...
         const linkedinMatch = trimmed.match(/^linkedin\s*-\s*(.+)$/i);
         if (linkedinMatch) {
           const label = linkedinMatch[0].replace(/linkedin\s*-\s*/i, 'linkedin - ');
           return (
             <div key={i}>
-              <a href={contact.linkedin || ''} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a 
+                href={contact?.linkedin || ''} 
+                className="font-bold text-blue-600 hover:text-blue-800 underline decoration-wavy underline-offset-2" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                {label}
+              </a>
             </div>
           );
         }
 
+        // Twitter / X: x - ...
         const twitterMatch = trimmed.match(/^(x\/twitter|x|twitter)\s*-\s*(.+)$/i);
         if (twitterMatch) {
           const label = trimmed.replace(/^(x\/twitter|x|twitter)\s*-\s*/i, 'X/twitter - ');
           return (
             <div key={i}>
-              <a href={contact.twitter || ''} className="font-bold text-blue-600 hover:underline" target="_blank" rel="noreferrer">{label}</a>
+              <a 
+                href={contact?.twitter || ''} 
+                className="font-bold text-blue-600 hover:text-blue-800 underline decoration-wavy underline-offset-2" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                {label}
+              </a>
             </div>
           );
         }
 
-        // Default: render plain text preserving line breaks
+        // Preserve paragraph spacing for blank lines
+        if (trimmed === '') {
+          return <div key={i} className="h-2" />;
+        }
+
+        // Default line rendering with auto-link detection
         return (
-          <div key={i} className="whitespace-pre-line">{line}</div>
+          <div key={i} className="whitespace-pre-line leading-relaxed">
+            {renderLineWithLinks(line)}
+          </div>
         );
       })}
     </div>

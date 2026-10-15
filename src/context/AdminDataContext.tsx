@@ -93,10 +93,9 @@ const defaultGeneral: GeneralInfo = {
 
 const defaultAbout: AboutInfo = {
   summary: [
-    'I am Rajnikant Gaurav, a Computer Science Engineering student (2022–2026) and an aspiring founder.',
-    "I don't just write code; I build products. My passion lies in solving real-world problems through",
-    'scalable technology and intuitive design. I thrive on late-night coding sessions and',
-    'the thrill of shipping something new to the world.',
+    'I am Rajnikant Gaurav (born 20 September 2005), an independent software developer, technology enthusiast, AI explorer, open-source contributor, and entrepreneur from Uttar Pradesh, India. My career and development philosophy are centered on one primary principle: learn technology, build with it, and turn ideas into real products.',
+    'Born in Dadar, Ballia, Uttar Pradesh, I demonstrated an early curiosity toward computing and software systems. This interest matured into a structured pursuit of computer science, full-stack engineering, practical artificial intelligence applications, and startup entrepreneurship.',
+    'I am currently active as an independent engineer and the founder of Prometrion, a software company dedicated to engineering digital products, automation systems, and applied artificial intelligence software.',
   ],
   futureGoals: [
     'Building & Scaling Prometrion.',
@@ -112,9 +111,9 @@ const defaultAbout: AboutInfo = {
     'Built, led, and retained a 5-member core team from freshman year through 7th semester.',
   ],
   journey: [
-    { title: 'The Beginning', body: 'It started in school when I wrote my first HTML line. The magic of seeing code turn into visuals on screen hooked me instantly. I spent my evenings deconstructing websites.' },
-    { title: 'College & Exploration', body: 'Entering college in 2022, I dived deep into C++ and Data Structures. But I realized my true calling was building products, not just solving algorithmic puzzles. I picked up React and Node.js.' },
-    { title: 'The Prometrion Era (Now)', body: 'Today, I am channeling all my energy into Prometrion — establishing it as a premier software and digital services company. I am architecting production platforms, scaling turnkey solutions, and helping businesses grow with modern engineering. The journey has just begun!', isPulse: true },
+    { title: 'The Beginning (Dadar, Ballia)', body: 'Born in Dadar, Ballia, Uttar Pradesh, I demonstrated an early curiosity toward computing and software systems. The magic of seeing code turn into visuals on screen hooked me instantly, spending evenings deconstructing websites.' },
+    { title: 'College & Structured Pursuit', body: 'Entering college in 2022, my interest matured into a structured pursuit of computer science, full-stack engineering, and practical AI applications. I realized my true calling was building real products, not just solving algorithmic puzzles.' },
+    { title: 'The Prometrion Era (Now)', body: 'Today, I am active as an independent engineer and the founder of Prometrion — dedicated to engineering digital products, automation systems, and applied artificial intelligence software. Turning ideas into real products is what drives me forward every single day. The journey has just begun!', isPulse: true },
   ],
   education: [
     { institution: 'SHEAT college of engineering and management, Varanasi, UP', degree: 'B.Tech in Computer Science & Engineering', period: '2022 – 2026 (Current)', note: 'Focusing on Full Stack Development & Entrepreneurship.' },
@@ -248,10 +247,14 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   const storedAbout = (() => {
     if (!stored.about) return defaultAbout;
-    const isOldCompetition = JSON.stringify(stored.about).includes('developer competitions');
-    if (isOldCompetition) {
+    const aboutStr = JSON.stringify(stored.about);
+    const isOldData = aboutStr.includes('developer competitions') ||
+      !aboutStr.includes('Dadar') ||
+      !aboutStr.includes('20 September 2005');
+    if (isOldData) {
       return {
         ...stored.about,
+        summary: defaultAbout.summary,
         futureGoals: defaultAbout.futureGoals,
         journey: defaultAbout.journey,
       };
@@ -266,7 +269,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         item.text.includes('Gemini Vision') ||
         item.text.includes('Gemini AI') ||
         (item.topic === 'prometrion_intro' && (item.text.includes('hackathon') || item.text.includes('competition') || item.text.includes('कॉम्पीटिशन'))) ||
-        (item.id.startsWith('about_me') && (item.text.includes('hackathon') || item.text.includes('कॉम्पीटिशन'))) ||
+        (item.id.startsWith('about_me') && (!item.text.includes('Dadar') || !item.text.includes('20 September 2005') || item.text.includes('hackathon') || item.text.includes('कॉम्पीटिशन'))) ||
         (item.id.startsWith('projects_overview') && (item.text.includes('developer competition') || item.text.includes('कॉम्पीटिशन'))) ||
         (item.id.startsWith('founder_mindset') && (item.text.includes('developer competitions') || item.text.includes('developer competition')))
       ) {

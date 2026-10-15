@@ -205,13 +205,13 @@ export const NotebookPage: React.FC<NotebookPageProps> = ({
 
           <div>
             <h2 className="notebook-text text-2xl font-bold mb-2 leading-[2rem]">About Me -</h2>
-            <div className="notebook-text text-xl leading-[2rem]">
+            <div className="notebook-text text-xl leading-[2rem] space-y-3">
               {about.summary.slice(0, 4).map((line, i) => (
                 <p key={i}>{line}</p>
               ))}
               <button
                 onClick={onAboutClick}
-                className="mt-1 text-blue-600 font-bold hover:underline decoration-wavy transition-all flex items-center gap-2 w-max cursor-pointer"
+                className="mt-2 text-blue-600 font-bold hover:underline decoration-wavy transition-all flex items-center gap-2 w-max cursor-pointer"
               >
                 Read my full story &rarr;
               </button>

@@ -464,13 +464,13 @@ export const knowledgeBase: KnowledgeEntry[] = [
     id: "about_me_en",
     topic: "about_me",
     language: "en",
-    text: "Rajnikant Gaurav is a B.Tech Computer Science student (2022–26) and founder. He is the founder and CEO of Prometrion (prometrion.com) — an independent technology and software company delivering custom web development, mobile apps, and Generative Engine Optimization (GEO). He is passionate about shipping real products, learning by building, and making an impact through technology. He is also the creator of Paper UI, the world's only paper-notebook themed UI platform, used on this very portfolio."
+    text: "Rajnikant Gaurav (born 20 September 2005) is an independent software developer, technology enthusiast, AI explorer, open-source contributor, and entrepreneur from Uttar Pradesh, India. Born in Dadar, Ballia, Uttar Pradesh, he demonstrated an early curiosity toward computing and software systems. This interest matured into a structured pursuit of computer science, full-stack engineering, practical artificial intelligence applications, and startup entrepreneurship.\n\nHis career and development philosophy are centered on one primary principle: learn technology, build with it, and turn ideas into real products.\n\nHe is currently active as an independent engineer and the founder of Prometrion (prometrion.com), a software company dedicated to engineering digital products, automation systems, and applied artificial intelligence software. He is also the creator of Paper UI, the world's only paper-notebook themed UI platform."
   },
   {
     id: "about_me_hi",
     topic: "about_me",
     language: "hi",
-    text: "रजनीकांत गौरव एक B.Tech कंप्यूटर साइंस स्टूडेंट (2022–26) और फाउंडर हैं। वो Prometrion (prometrion.com) के फाउंडर और CEO हैं — एक टेक्नोलॉजी और सॉफ्टवेयर कंपनी जो कस्टम वेब डेवलपमेंट, मोबाइल ऐप्स और Generative Engine Optimization (GEO) प्रदान करती है। वो असली प्रोडक्ट्स बनाने और टेक्नोलॉजी से बदलाव लाने में यकीन रखते हैं। इसके अलावा वो Paper UI के क्रिएटर हैं — दुनिया का एकमात्र paper-notebook themed UI platform।"
+    text: "रजनीकांत गौरव (जन्म: 20 सितंबर 2005) उत्तर प्रदेश, भारत से एक स्वतंत्र सॉफ्टवेयर डेवलपर, टेक्नोलॉजी उत्साही, AI एक्सप्लोरर, ओपन-सोर्स कंट्रीब्यूटर और उद्यमी हैं। दादर, बलिया, उत्तर प्रदेश में जन्मे रजनीकांत की कंप्यूटिंग और सॉफ्टवेयर सिस्टम में शुरुआती जिज्ञासा समय के साथ कंप्यूटर साइंस, फुल-स्टैक इंजीनियरिंग, व्यावहारिक AI अनुप्रयोगों और स्टार्टअप उद्यमिता में विकसित हुई।\n\nउनका मुख्य करियर और विकास दर्शन एक प्राथमिक सिद्धांत पर आधारित है: टेक्नोलॉजी सीखो, उससे निर्माण करो और विचारों को वास्तविक उत्पादों में बदलो।\n\nवे वर्तमान में एक स्वतंत्र इंजीनियर और Prometrion (prometrion.com) के संस्थापक हैं — जो डिजिटल उत्पादों, ऑटोमेशन सिस्टम और अनुप्रयुक्त आर्टिफिशियल इंटेलिजेंस सॉफ्टवेयर के निर्माण के लिए समर्पित एक सॉफ्टवेयर कंपनी है। वे Paper UI के निर्माता भी हैं।"
   },
 
   // ─── SKILLS ──────────────────────────────────────────────

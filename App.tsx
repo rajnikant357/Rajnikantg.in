@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import usePageTracking from './src/hooks/usePageTracking';
+import usePageSEO from './src/hooks/usePageSEO';
 import { Moon, Sun, Star, ArrowLeft, Pencil, Coffee, Sparkles, Check, QrCode, Megaphone, Trophy, Briefcase, Mail, X } from 'lucide-react';
 import { StickyNoteChat } from './components/StickyNoteChat';
 import { Project } from './types';
@@ -69,6 +70,8 @@ const AppContent: React.FC = () => {
 
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
+
+  usePageSEO({ view, currentProject });
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isFlying, setIsFlying] = useState(false);
