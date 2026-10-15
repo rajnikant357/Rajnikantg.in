@@ -123,8 +123,8 @@ export const intents: Intent[] = [
     topic: "prometrion_intro",
     patterns: [
       "what is prometrion", "tell me about prometrion", "prometrion kya hai",
-      "prometrion ke baare me batao", "your startup", "his startup",
-      "your platform", "developer arena platform", "dev competition platform",
+      "prometrion ke baare me batao", "your startup", "his startup", "your company", "his company",
+      "software company", "digital services", "prometrion services", "what does prometrion do",
       "prometrion", "why did rajnikant start prometrion", "what problem does prometrion solve",
       "how is prometrion different from other platforms", "prometrion ka idea kaise aaya",
       "ye platform kis cheez ke liye hai", "prometrion vision", "difference between prometrion and other platforms",
@@ -464,13 +464,13 @@ export const knowledgeBase: KnowledgeEntry[] = [
     id: "about_me_en",
     topic: "about_me",
     language: "en",
-    text: "Rajnikant Gaurav is a B.Tech Computer Science student (2022–26) and aspiring founder. He is currently building Prometrion — a competitive developer platform for hackathons and coding contests. He is passionate about shipping real products, learning by building, and making an impact through technology. He is also the creator of Paper UI, the world's only paper-notebook themed UI platform, used on this very portfolio."
+    text: "Rajnikant Gaurav is a B.Tech Computer Science student (2022–26) and founder. He is the founder and CEO of Prometrion (prometrion.com) — an independent technology and software company delivering custom web development, mobile apps, and Generative Engine Optimization (GEO). He is passionate about shipping real products, learning by building, and making an impact through technology. He is also the creator of Paper UI, the world's only paper-notebook themed UI platform, used on this very portfolio."
   },
   {
     id: "about_me_hi",
     topic: "about_me",
     language: "hi",
-    text: "रजनीकांत गौरव एक B.Tech कंप्यूटर साइंस स्टूडेंट (2022–26) और फाउंडर हैं। वो अभी Prometrion बना रहे हैं — एक डेवलपर कॉम्पीटिशन प्लेटफॉर्म। वो असली प्रोडक्ट्स बनाने और टेक्नोलॉजी से बदलाव लाने में यकीन रखते हैं। इसके अलावा वो Paper UI के क्रिएटर हैं — दुनिया का एकमात्र paper-notebook themed UI platform।"
+    text: "रजनीकांत गौरव एक B.Tech कंप्यूटर साइंस स्टूडेंट (2022–26) और फाउंडर हैं। वो Prometrion (prometrion.com) के फाउंडर और CEO हैं — एक टेक्नोलॉजी और सॉफ्टवेयर कंपनी जो कस्टम वेब डेवलपमेंट, मोबाइल ऐप्स और Generative Engine Optimization (GEO) प्रदान करती है। वो असली प्रोडक्ट्स बनाने और टेक्नोलॉजी से बदलाव लाने में यकीन रखते हैं। इसके अलावा वो Paper UI के क्रिएटर हैं — दुनिया का एकमात्र paper-notebook themed UI platform।"
   },
 
   // ─── SKILLS ──────────────────────────────────────────────
@@ -492,13 +492,13 @@ export const knowledgeBase: KnowledgeEntry[] = [
     id: "projects_overview_en",
     topic: "projects_overview",
     language: "en",
-    text: "Rajnikant has built 16 real projects:\n1. Prometrion — developer competition platform (prometrion.com)\n2. Sharpr — polished product web experience (sharpr.in)\n3. Paperfolio — this notebook-style portfolio (rajnikantg.in)\n4. Ultron — AI-themed futuristic UI\n5. Prometrion AI — AI layer for the Prometrion ecosystem\n6. Paper UI Admin Dashboard — admin panel with paper design\n7. Qualytics AI — SaaS frontend clone\n8. LocalLink — local service discovery platform\n9. Pac Man Clone — browser arcade game\n10. Quiz Game — browser quiz game\n11. Study Academy — education landing page\n12. Gazal Suit Ghar — fashion boutique storefront\n13. Skribble Clone — drawing browser game\n14. Alankarini Mehandi Art — mehndi artist portfolio\n15. Zacson — brand-style webpage\n16. Pankaj Consultancy — professional consultancy website"
+    text: "Rajnikant has built 16 real projects:\n1. Prometrion — technology & software company (prometrion.com)\n2. Sharpr — polished product web experience (sharpr.in)\n3. Paperfolio — this notebook-style portfolio (rajnikantg.in)\n4. Ultron — AI-themed futuristic UI\n5. Prometrion AI — AI companion for the Prometrion ecosystem\n6. Paper UI Admin Dashboard — admin panel with paper design\n7. Qualytics AI — SaaS frontend clone\n8. LocalLink — local service discovery platform\n9. Pac Man Clone — browser arcade game\n10. Quiz Game — browser quiz game\n11. Study Academy — education landing page\n12. Gazal Suit Ghar — fashion boutique storefront\n13. Skribble Clone — drawing browser game\n14. Alankarini Mehandi Art — mehndi artist portfolio\n15. Zacson — brand-style webpage\n16. Pankaj Consultancy — professional consultancy website"
   },
   {
     id: "projects_overview_hi",
     topic: "projects_overview",
     language: "hi",
-    text: "रजनीकांत ने 16 real projects बनाए हैं:\n1. Prometrion — डेवलपर कॉम्पीटिशन प्लेटफॉर्म\n2. Sharpr — क्लीन प्रोडक्ट वेब एक्सपीरियंस\n3. Paperfolio — यही notebook portfolio\n4. Ultron — AI-themed futuristic UI\n5. Prometrion AI — AI assistant for Prometrion\n6. Paper UI Admin Dashboard\n7. Qualytics AI clone\n8. LocalLink — लोकल सर्विस प्लेटफॉर्म\n9. Pac Man Clone — ब्राउज़र गेम\n10. Quiz Game — ब्राउज़र क्विज़\n11. Study Academy — एजुकेशन वेबसाइट\n12. Gazal Suit Ghar — फैशन स्टोरफ्रंट\n13. Skribble Clone — ड्रॉइंग गेम\n14. Alankarini Mehandi Art\n15. Zacson — ब्रैंड वेबपेज\n16. Pankaj Consultancy — कंसल्टेंसी वेबसाइट"
+    text: "रजनीकांत ने 16 real projects बनाए हैं:\n1. Prometrion — टेक्नोलॉजी और सॉफ्टवेयर कंपनी (prometrion.com)\n2. Sharpr — क्लीन प्रोडक्ट वेब एक्सपीरियंस\n3. Paperfolio — यही notebook portfolio\n4. Ultron — AI-themed futuristic UI\n5. Prometrion AI — Prometrion इकोसिस्टम का AI कंपैनियन\n6. Paper UI Admin Dashboard\n7. Qualytics AI clone\n8. LocalLink — लोकल सर्विस प्लेटफॉर्म\n9. Pac Man Clone — ब्राउज़र गेम\n10. Quiz Game — ब्राउज़र क्विज़\n11. Study Academy — एजुकेशन वेबसाइट\n12. Gazal Suit Ghar — फैशन स्टोरफ्रंट\n13. Skribble Clone — ड्रॉइंग गेम\n14. Alankarini Mehandi Art\n15. Zacson — ब्रैंड वेबपेज\n16. Pankaj Consultancy — कंसल्टेंसी वेबसाइट"
   },
 
   // ─── PROMETRION ──────────────────────────────────────────
@@ -506,13 +506,13 @@ export const knowledgeBase: KnowledgeEntry[] = [
     id: "prometrion_intro_en",
     topic: "prometrion_intro",
     language: "en",
-    text: "Prometrion (prometrion.com) is Rajnikant's flagship startup — a developer competition platform for hosting hackathons, minithons, and coding contests. It allows colleges, companies, and communities to run events end-to-end: registration, team management, submissions, judging, and certificates. Participants get profiles to build their competitive coding identity. The vision: make Prometrion the default place developers think of for hackathons. Tech: React, TypeScript, Node.js, MongoDB, Realtime features."
+    text: "Prometrion (prometrion.com) is Rajnikant's flagship software company and digital services platform, founded in November 2025. It helps businesses build, launch, and grow through custom website development (Astro, React, Tailwind CSS), native Android application engineering (Kotlin, Flutter), Generative Engine Optimization (GEO / AI search visibility for Google, ChatGPT, Perplexity, Gemini), and 30+ turnkey productized solutions. It also includes the Prometrion Webstore, Appstore, and Prometrion AI multimodal engine. Rajnikant built Prometrion completely as a solo founder and chief architect. Tech: Astro, React, TypeScript, Tailwind CSS, Node.js, Android, PostgreSQL, Edge CDN."
   },
   {
     id: "prometrion_intro_hi",
     topic: "prometrion_intro",
     language: "hi",
-    text: "Prometrion (prometrion.com) रजनीकांत का मुख्य स्टार्टअप है — एक डेवलपर कॉम्पीटिशन प्लेटफॉर्म जहाँ हैकाथॉन्स, मिनिथॉन्स और कोडिंग कॉन्टेस्ट्स होते हैं। कॉलेज, कंपनियाँ और कम्युनिटीज इसपर इवेंट्स चला सकती हैं। Participants अपनी competitive identity बना सकते हैं। Goal: Prometrion को hackathons के लिए default platform बनाना।"
+    text: "Prometrion (prometrion.com) रजनीकांत की मुख्य सॉफ्टवेयर कंपनी और डिजिटल सर्विसेज प्लेटफॉर्म है (नवंबर 2025 में स्थापित)। यह बिज़नेसेज को कस्टम वेबसाइट डेवलपमेंट (Astro, React, Tailwind CSS), नेटिव एंड्रॉइड ऐप इंजीनियरिंग (Kotlin, Flutter), Generative Engine Optimization (GEO - AI सर्च विजिबिलिटी Google, ChatGPT, Gemini के लिए), और 30+ डिजिटल सोल्यूशन्स प्रदान करती है। इसमें Prometrion Webstore, Appstore और Prometrion AI भी शामिल हैं। रजनीकांत ने इसे अकेले solo founder और chief architect के रूप में बनाया है।"
   },
 
   // ─── PAPERFOLIO ──────────────────────────────────────────
@@ -646,13 +646,13 @@ export const knowledgeBase: KnowledgeEntry[] = [
     id: "founder_mindset_en",
     topic: "founder_mindset",
     language: "en",
-    text: "Rajnikant sees himself as a builder and founder — not just a developer. His goal is financial independence through shipping successful products. He believes the best way to learn is by building things people actually use. He treats every side project as a real product with real users. His long-term vision: build Prometrion into the go-to platform for developer competitions globally, and create multiple impactful products."
+    text: "Rajnikant sees himself as a builder and founder — not just a developer. His goal is financial independence through shipping successful products. He believes the best way to learn is by building things people actually use. He treats every side project as a real product with real users. His long-term vision: scale Prometrion into a world-class software company and digital solutions powerhouse globally, and create multiple impactful products."
   },
   {
     id: "founder_mindset_hi",
     topic: "founder_mindset",
     language: "hi",
-    text: "रजनीकांत खुद को एक founder/builder मानते हैं। उनका goal financial independence है real products बनाकर। वो हर side project को real product की तरह treat करते हैं। Long-term vision: Prometrion को globally developer competitions का default platform बनाना।"
+    text: "रजनीकांत खुद को एक founder/builder मानते हैं। उनका goal financial independence है real products बनाकर। वो हर side project को real product की तरह treat करते हैं। Long-term vision: Prometrion को globally एक वर्ल्ड-क्लास सॉफ्टवेयर और टेक्नोलॉजी कंपनी बनाना और कई असरदार प्रोडक्ट्स तैयार करना।"
   },
 
   // ─── EXPERIENCE ──────────────────────────────────────────
@@ -660,13 +660,13 @@ export const knowledgeBase: KnowledgeEntry[] = [
     id: "experience_en",
     topic: "experience",
     language: "en",
-    text: "Rajnikant builds his own experience by creating real platforms. Instead of waiting for opportunities, he creates them. He has:\n• Built and shipped 16 real projects\n• Built Prometrion from scratch as a startup\n• Worked with client businesses (Gazal Suit Ghar, Pankaj Consultancy, Alankarini Mehandi Art)\n• Created the Paper UI design system — MIT licensed\n• Built AI-powered features using Gemini APIs\n• Deployed projects on Vercel, GitHub Pages, and custom domains"
+    text: "Rajnikant builds his own experience by creating real platforms. Instead of waiting for opportunities, he creates them. He has:\n• Built and shipped 16 real projects\n• Founded and built Prometrion from scratch as a software company\n• Worked with client businesses (Gazal Suit Ghar, Pankaj Consultancy, Alankarini Mehandi Art)\n• Created the Paper UI design system — MIT licensed\n• Built AI-powered features using Gemini APIs\n• Deployed projects on Vercel, GitHub Pages, and custom domains"
   },
   {
     id: "experience_hi",
     topic: "experience",
     language: "hi",
-    text: "रजनीकांत अपना experience खुद बनाते हैं:\n• 16 real projects build किए\n• Prometrion startup बनाया\n• Client businesses के लिए websites बनाईं\n• Paper UI design system create किया (MIT licensed)\n• AI features (Gemini APIs) integrate किए\n• Vercel, GitHub Pages पर deploy किया"
+    text: "रजनीकांत अपना experience खुद बनाते हैं:\n• 16 real projects build किए\n• Prometrion को scratch से एक सॉफ्टवेयर कंपनी के रूप में बनाया\n• Client businesses के लिए websites बनाईं\n• Paper UI design system create किया (MIT licensed)\n• AI features (Gemini APIs) integrate किए\n• Vercel, GitHub Pages पर deploy किया"
   },
 
   // ─── PAPERSKILLS.SH CONTENT ──────────────────────────────

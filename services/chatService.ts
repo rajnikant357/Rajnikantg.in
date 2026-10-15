@@ -112,6 +112,7 @@ const KEYWORD_MAP: Record<string, string> = {
   // Prometrion
   'prometrion': 'PROMETRION_INTRO',
   'startup': 'PROMETRION_INTRO',
+  'company': 'PROMETRION_INTRO',
   'hackathon': 'PROMETRION_INTRO',
   'competition': 'PROMETRION_INTRO',
 

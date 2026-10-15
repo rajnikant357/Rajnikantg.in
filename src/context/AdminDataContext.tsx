@@ -99,10 +99,10 @@ const defaultAbout: AboutInfo = {
     'the thrill of shipping something new to the world.',
   ],
   futureGoals: [
-    'Building Prometrion.',
-    'My primary goal is to launch and scale Prometrion into a global hub for developer competitions.',
+    'Building & Scaling Prometrion.',
+    'My primary goal is to launch and scale Prometrion into a global software company and digital solutions powerhouse.',
     'I envision a future where I am financially independent through my own products, creating value',
-    'for thousands of users. I want to transition from a student builder to a full-time founder.',
+    'for businesses and thousands of users. I want to transition from a student builder to a full-time founder.',
   ],
   techStack: ['JavaScript, TypeScript', 'React, Next.js, Tailwind CSS', 'Node.js, Express, REST APIs', 'Python,', 'Git, GitHub, Vercel', 'GenAI API Integration'],
   hobbies: ['Building side projects', 'Exploring Startup Case Studies', 'Playing Chess', 'Drawing'],
@@ -114,7 +114,7 @@ const defaultAbout: AboutInfo = {
   journey: [
     { title: 'The Beginning', body: 'It started in school when I wrote my first HTML line. The magic of seeing code turn into visuals on screen hooked me instantly. I spent my evenings deconstructing websites.' },
     { title: 'College & Exploration', body: 'Entering college in 2022, I dived deep into C++ and Data Structures. But I realized my true calling was building products, not just solving algorithmic puzzles. I picked up React and Node.js.' },
-    { title: 'The Prometrion Era (Now)', body: 'Today, I am channeling all my energy into Prometrion. I am learning about system design, user acquisition, and what it takes to run a tech startup. The journey has just begun!', isPulse: true },
+    { title: 'The Prometrion Era (Now)', body: 'Today, I am channeling all my energy into Prometrion — establishing it as a premier software and digital services company. I am architecting production platforms, scaling turnkey solutions, and helping businesses grow with modern engineering. The journey has just begun!', isPulse: true },
   ],
   education: [
     { institution: 'SHEAT college of engineering and management, Varanasi, UP', degree: 'B.Tech in Computer Science & Engineering', period: '2022 – 2026 (Current)', note: 'Focusing on Full Stack Development & Entrepreneurship.' },
@@ -224,6 +224,17 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     const mergedDefaults = defaultProjects.map(defaultProj => {
       const storedProj = storedMap.get(defaultProj.id);
       if (!storedProj) return defaultProj;
+      if (defaultProj.id === 'prometrion') {
+        const isOldHackathon = `${storedProj.tagline} ${storedProj.overview} ${storedProj.subTagline}`.toLowerCase().includes('hackathon') ||
+          `${storedProj.tagline} ${storedProj.overview}`.toLowerCase().includes('competition platform') ||
+          `${storedProj.tagline} ${storedProj.overview}`.toLowerCase().includes('coding contests');
+        if (isOldHackathon) {
+          return {
+            ...defaultProj,
+            image: defaultProj.image || storedProj.image,
+          };
+        }
+      }
       return {
         ...defaultProj,
         ...storedProj,
@@ -235,10 +246,30 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     return [...mergedDefaults, ...customProjects];
   })();
 
+  const storedAbout = (() => {
+    if (!stored.about) return defaultAbout;
+    const isOldCompetition = JSON.stringify(stored.about).includes('developer competitions');
+    if (isOldCompetition) {
+      return {
+        ...stored.about,
+        futureGoals: defaultAbout.futureGoals,
+        journey: defaultAbout.journey,
+      };
+    }
+    return stored.about;
+  })();
+
   const storedChatKnowledge = (() => {
     if (!stored.chatKnowledge || !Array.isArray(stored.chatKnowledge)) return defaultKnowledge as AdminKnowledgeEntry[];
     return stored.chatKnowledge.map(item => {
-      if (item.text.includes('Gemini Vision') || item.text.includes('Gemini AI')) {
+      if (
+        item.text.includes('Gemini Vision') ||
+        item.text.includes('Gemini AI') ||
+        (item.topic === 'prometrion_intro' && (item.text.includes('hackathon') || item.text.includes('competition') || item.text.includes('कॉम्पीटिशन'))) ||
+        (item.id.startsWith('about_me') && (item.text.includes('hackathon') || item.text.includes('कॉम्पीटिशन'))) ||
+        (item.id.startsWith('projects_overview') && (item.text.includes('developer competition') || item.text.includes('कॉम्पीटिशन'))) ||
+        (item.id.startsWith('founder_mindset') && (item.text.includes('developer competitions') || item.text.includes('developer competition')))
+      ) {
         const matchingDefault = (defaultKnowledge as AdminKnowledgeEntry[]).find(dk => dk.id === item.id);
         if (matchingDefault) return matchingDefault;
       }
@@ -249,7 +280,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const [data, setData] = useState<PortfolioData>({
     general: storedGeneral ?? defaultGeneral,
     projects: storedProjects,
-    about: stored.about ?? defaultAbout,
+    about: storedAbout,
     contact: stored.contact ?? defaultContact,
     donateTiers: storedDonateTiers,
     sponsorTiers: stored.sponsorTiers ?? defaultSponsorTiers,
