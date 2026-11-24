@@ -134,7 +134,7 @@ If you'd like, I can create a short public timeline (with dates), or expand the 
 
 ## License
 
-This repository is available under the MIT License. Replace or update this section if you need a different license
+This repository is available under the MIT License. Replace or update this section if you need a different license.
 
 ---
 
